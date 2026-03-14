@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light professional theme - deep slate primary, teal accent */
+    --background: 0.98 0.002 250;
+    --foreground: 0.18 0.025 255;
+
+    --card: 1 0 0;
+    --card-foreground: 0.18 0.025 255;
+
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0.025 255;
+
+    --primary: 0.28 0.065 255;
+    --primary-foreground: 1 0 0;
+
+    --secondary: 0.95 0.008 240;
+    --secondary-foreground: 0.28 0.065 255;
+
+    --muted: 0.95 0.008 240;
+    --muted-foreground: 0.52 0.02 240;
+
+    --accent: 0.55 0.18 195;
+    --accent-foreground: 1 0 0;
+
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 1 0 0;
+
+    --border: 0.9 0.012 240;
+    --input: 0.9 0.012 240;
+    --ring: 0.28 0.065 255;
+
+    --radius: 0.5rem;
+
+    /* Severity colors */
+    --severity-critical: 0.52 0.22 25;
+    --severity-high: 0.6 0.18 50;
+    --severity-medium: 0.65 0.16 85;
+    --severity-low: 0.5 0.15 145;
+    --severity-info: 0.5 0.18 220;
+
+    /* Chart colors */
+    --chart-1: 0.52 0.22 25;
+    --chart-2: 0.6 0.18 50;
+    --chart-3: 0.65 0.16 85;
+    --chart-4: 0.5 0.15 145;
+    --chart-5: 0.5 0.18 220;
+
+    /* Sidebar */
+    --sidebar: 0.17 0.04 255;
+    --sidebar-foreground: 0.88 0.015 255;
+    --sidebar-primary: 0.55 0.18 195;
+    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-accent: 0.25 0.055 255;
+    --sidebar-accent-foreground: 0.95 0.01 255;
+    --sidebar-border: 0.25 0.04 255;
+    --sidebar-ring: 0.55 0.18 195;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(0.82 0.015 240);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.65 0.025 240);
+}
+
+/* Sidebar nav link active */
+.nav-link-active {
+  @apply bg-sidebar-accent text-sidebar-accent-foreground;
+}
+
+/* Score gauge */
+@keyframes gauge-fill {
+  from {
+    stroke-dashoffset: 314;
+  }
+  to {
+    stroke-dashoffset: var(--gauge-offset);
+  }
+}
+.gauge-arc {
+  animation: gauge-fill 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
